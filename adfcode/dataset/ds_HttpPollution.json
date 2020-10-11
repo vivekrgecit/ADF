@@ -1,0 +1,22 @@
+{
+	"name": "ds_HttpPollution",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_HttpPollution",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "resource/3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69?api-key=579b464db66ec23bdd00000184457dc9541c40535352629bfd24545d&format=csv&offset=0&limit=1400"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
