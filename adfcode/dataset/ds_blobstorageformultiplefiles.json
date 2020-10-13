@@ -1,0 +1,71 @@
+{
+	"name": "ds_blobstorageformultiplefiles",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blobstorageformultiplefiles",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@concat(formatDateTime(utcnow(),'yyyy'),'/',formatDateTime(utcnow(),'MM'),'/',formatDateTime(utcnow(),'dd'))",
+					"type": "Expression"
+				},
+				"container": "pollutiondata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "id",
+				"type": "String"
+			},
+			{
+				"name": "country",
+				"type": "String"
+			},
+			{
+				"name": "state",
+				"type": "String"
+			},
+			{
+				"name": "city",
+				"type": "String"
+			},
+			{
+				"name": "station",
+				"type": "String"
+			},
+			{
+				"name": "last_update",
+				"type": "String"
+			},
+			{
+				"name": "pollutant_id",
+				"type": "String"
+			},
+			{
+				"name": "pollutant_min",
+				"type": "String"
+			},
+			{
+				"name": "pollutant_max",
+				"type": "String"
+			},
+			{
+				"name": "pollutant_avg",
+				"type": "String"
+			},
+			{
+				"name": "pollutant_unit",
+				"type": "String"
+			}
+		]
+	}
+}

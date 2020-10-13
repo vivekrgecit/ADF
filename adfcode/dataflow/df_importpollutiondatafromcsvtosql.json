@@ -1,0 +1,20 @@
+{
+	"name": "df_importpollutiondatafromcsvtosql",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_blobstorageformultiplefiles",
+						"type": "DatasetReference"
+					},
+					"name": "pollutiondatacsv"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(output(\n\t\tid as short,\n\t\tcountry as string,\n\t\tstate as string,\n\t\tcity as string,\n\t\tstation as string,\n\t\tlast_update as timestamp,\n\t\tpollutant_id as string,\n\t\tpollutant_min as integer,\n\t\tpollutant_max as integer,\n\t\tpollutant_avg as integer,\n\t\tpollutant_unit as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: true) ~> pollutiondatacsv"
+		}
+	}
+}
