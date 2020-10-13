@@ -1,0 +1,12 @@
+{
+	"name": "ls_AzureSqlMIpollution",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlMI",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=azuresqlerver.database.windows.net;initial catalog=pollution;user id=azuresqlerveradmin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkNFUEFERl8wNjQyMzQ5Mi1iYWRiLTQ0NzAtOTFlMi1lMjZkZjIwYTczMWYiDQp9"
+		}
+	}
+}
