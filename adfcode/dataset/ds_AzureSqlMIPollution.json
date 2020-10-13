@@ -1,0 +1,63 @@
+{
+	"name": "ds_AzureSqlMIPollution",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_AzureSqlMIpollution",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlMITable",
+		"schema": [
+			{
+				"name": "id",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "country",
+				"type": "varchar"
+			},
+			{
+				"name": "state",
+				"type": "varchar"
+			},
+			{
+				"name": "city",
+				"type": "varchar"
+			},
+			{
+				"name": "station",
+				"type": "varchar"
+			},
+			{
+				"name": "last_update",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			},
+			{
+				"name": "pollutant_id",
+				"type": "varchar"
+			},
+			{
+				"name": "pollutant_min",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "pollutant_max",
+				"type": "float",
+				"precision": 15
+			},
+			{
+				"name": "pollutant_avg",
+				"type": "float",
+				"precision": 15
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Air_Quality"
+		}
+	}
+}
