@@ -17,7 +17,13 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_importpollutiondatafromcsvtosql",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"NumberOfDays": {
+								"value": "@pipeline().parameters.NumberOfDays",
+								"type": "Expression"
+							}
+						}
 					},
 					"compute": {
 						"coreCount": 8,
@@ -26,6 +32,12 @@
 				}
 			}
 		],
+		"parameters": {
+			"NumberOfDays": {
+				"type": "int",
+				"defaultValue": 5
+			}
+		},
 		"annotations": []
 	}
 }
