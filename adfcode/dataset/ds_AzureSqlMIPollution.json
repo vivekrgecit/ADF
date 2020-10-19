@@ -57,7 +57,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "Air_Quality"
+			"table": "Air_QualityAvgByStation"
 		}
 	}
 }
