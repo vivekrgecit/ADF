@@ -3,32 +3,36 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "metainfofrompollutiondata",
-				"type": "GetMetadata",
+				"name": "Append variable1",
+				"type": "AppendVariable",
 				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "ds_blobstorageformultiplefiles",
-						"type": "DatasetReference"
-					},
-					"fieldList": [],
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings"
-					},
-					"formatSettings": {
-						"type": "DelimitedTextReadSettings"
-					}
+					"variableName": "FolderNames",
+					"value": ""
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"isSequential": true
 				}
 			}
 		],
+		"parameters": {
+			"NoOfDays": {
+				"type": "int",
+				"defaultValue": 5
+			}
+		},
+		"variables": {
+			"FolderNames": {
+				"type": "Array"
+			}
+		},
 		"annotations": []
 	}
 }
