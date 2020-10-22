@@ -3,27 +3,53 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Append variable1",
-				"type": "AppendVariable",
+				"name": "df_filterfoldersfrompollutionschema",
+				"type": "ExecuteDataFlow",
 				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "FolderNames",
-					"value": ""
+					"dataflow": {
+						"referenceName": "df_filterfoldersfrompollutionschema",
+						"type": "DataFlowReference",
+						"parameters": {
+							"numberofdays": "5"
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					}
 				}
 			},
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
 				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"isSequential": true
-				}
+				"userProperties": []
+			},
+			{
+				"name": "lookuppollutionschema",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"parameters": {
-			"NoOfDays": {
+			"numberofdays": {
 				"type": "int",
 				"defaultValue": 5
 			}
