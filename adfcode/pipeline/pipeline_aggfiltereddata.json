@@ -45,7 +45,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('lookuppollutionschema').output.Value",
+						"value": "@activity('lookuppollutionschema').output.value",
 						"type": "Expression"
 					},
 					"isSequential": true,
@@ -69,7 +69,7 @@
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
 										"wildcardFolderPath": {
-											"value": "concat(@item().year, '/', @item().month, '/', @item().date)",
+											"value": "concat(@item().Year, '/', @item().Month, '/', @item().Date, '/')",
 											"type": "Expression"
 										},
 										"wildcardFileName": "*"
