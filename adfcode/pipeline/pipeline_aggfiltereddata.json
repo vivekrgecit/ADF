@@ -69,7 +69,7 @@
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
 										"wildcardFolderPath": {
-											"value": "concat(@item().Year, '/', @item().Month, '/', @item().Date, '/')",
+											"value": "@concat(item().Year, '/', item().Month, '/', item().Date)",
 											"type": "Expression"
 										},
 										"wildcardFileName": "*"
