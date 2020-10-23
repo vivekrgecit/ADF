@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_aggfiltereddata",
+	"name": "pipeline_aggfiltereddata1",
 	"properties": {
 		"activities": [
 			{
@@ -102,13 +102,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_blobstorageformultiplefiles",
+									"referenceName": "ds_blobstorageformultiplefiles1",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_blobstorageformultiplefiles",
+									"referenceName": "ds_blobstorageformultiplefiles1",
 									"type": "DatasetReference"
 								}
 							]

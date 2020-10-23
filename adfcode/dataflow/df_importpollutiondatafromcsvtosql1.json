@@ -1,12 +1,12 @@
 {
-	"name": "df_importpollutiondatafromcsvtosql",
+	"name": "df_importpollutiondatafromcsvtosql1",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_blobstorageformultiplefiles",
+						"referenceName": "ds_blobstorageformultiplefiles1",
 						"type": "DatasetReference"
 					},
 					"name": "pollutiondatacsv"

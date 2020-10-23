@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_importpollutiondatafromcsvtosql",
+						"referenceName": "df_importpollutiondatafromcsvtosql1",
 						"type": "DataFlowReference",
 						"parameters": {
 							"NumberOfDays": {
