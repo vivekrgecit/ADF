@@ -1,5 +1,5 @@
 {
-	"name": "ds_blobstorageformultiplefiles",
+	"name": "ds_blobstorageformultiplefiles1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_blobstorageformultiplefiles",
