@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "df_importpollutiondatafromcsvtosql",
+				"name": "df_importpollutiondatafromcsvtosql1",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,13 +16,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_importpollutiondatafromcsvtosql",
+						"referenceName": "df_importpollutiondatafromcsvtosql1",
 						"type": "DataFlowReference",
 						"parameters": {
-							"NumberOfDays": {
-								"value": "@pipeline().parameters.NumberOfDays",
-								"type": "Expression"
-							}
+							"NumberOfDays": "5"
 						}
 					},
 					"compute": {
