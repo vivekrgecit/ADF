@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_blobstorageformultiplefiles1",
+						"referenceName": "ds_blobstorageformultiplefiles",
 						"type": "DatasetReference"
 					},
 					"name": "pollutiondatacsv"

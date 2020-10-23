@@ -102,13 +102,13 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_blobstorageformultiplefiles1",
+									"referenceName": "ds_blobstorageformultiplefiles",
 									"type": "DatasetReference"
 								}
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_blobstorageformultiplefiles1",
+									"referenceName": "ds_blobstorageformultiplefiles",
 									"type": "DatasetReference"
 								}
 							]
