@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_importpollutiondatafromcsvtosql",
+	"name": "pipeline_importpollutiondatafromcsvtosql1",
 	"properties": {
 		"activities": [
 			{
