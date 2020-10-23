@@ -141,9 +141,8 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": "2020",
 							"wildcardFileName": {
-								"value": "pollutionfiltereddata2020-10-22.csv",
+								"value": "@concat('pollutionfiltereddata', formatDateTime(utcnow(), 'yyyy-MM-dd'), '.csv')",
 								"type": "Expression"
 							}
 						},
