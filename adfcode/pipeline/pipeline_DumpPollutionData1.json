@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_DumpPollutionData",
+	"name": "pipeline_DumpPollutionData1",
 	"properties": {
 		"activities": [
 			{
