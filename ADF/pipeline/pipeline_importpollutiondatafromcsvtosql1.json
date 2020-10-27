@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "df_importpollutiondatafromcsvtosql1",
+				"name": "df_importpollutiondatafromcsvtosql",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
