@@ -1,0 +1,24 @@
+{
+	"name": "trg_Hourly",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "pipeline_dumpPollutionData",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 1,
+				"startTime": "2020-10-27T23:15:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
