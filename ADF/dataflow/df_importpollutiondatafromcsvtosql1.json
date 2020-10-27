@@ -1,0 +1,32 @@
+{
+	"name": "df_importpollutiondatafromcsvtosql1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_blobstorageformultiplefiles",
+						"type": "DatasetReference"
+					},
+					"name": "pollutiondatacsv"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_AzureSqlMIPollution",
+						"type": "DatasetReference"
+					},
+					"name": "pollutionoutputstreamtosql"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggbystation"
+				}
+			],
+			"script": "parameters{\n\tNumberOfDays as integer (5)\n}\nsource(output(\n\t\tid as short,\n\t\tcountry as string,\n\t\tstate as string,\n\t\tcity as string,\n\t\tstation as string,\n\t\tlast_update as timestamp 'dd-MM-yyyy HH:mm:ss',\n\t\tpollutant_id as string,\n\t\tpollutant_min as float '000.##',\n\t\tpollutant_max as float '000.##',\n\t\tpollutant_avg as float '000.##',\n\t\tpollutant_unit as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: true,\n\tmodifiedAfter: (addDays(currentTimestamp(), -$NumberOfDays)),\n\tmodifiedBefore: (currentTimestamp()),\n\twildcardPaths:['**/**/*.csv']) ~> pollutiondatacsv\npollutiondatacsv aggregate(groupBy(station,\n\t\tpollutant_id),\n\tpollutant_min = avg(pollutant_min),\n\t\tpollutant_max = avg(pollutant_max),\n\t\tpollutant_avg = avg(pollutant_avg)) ~> aggbystation\naggbystation sink(input(\n\t\tid as string,\n\t\tcountry as string,\n\t\tstate as string,\n\t\tcity as string,\n\t\tstation as string,\n\t\tlast_update as string,\n\t\tpollutant_id as string,\n\t\tpollutant_min as string,\n\t\tpollutant_max as string,\n\t\tpollutant_avg as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\tformat: 'table',\n\tmapColumn(\n\t\tstation,\n\t\tpollutant_id,\n\t\tpollutant_min,\n\t\tpollutant_max,\n\t\tpollutant_avg\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> pollutionoutputstreamtosql"
+		}
+	}
+}

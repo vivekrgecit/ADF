@@ -1,0 +1,35 @@
+{
+	"name": "df_filterfoldersfrompollutionschema",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_pollutionschema",
+						"type": "DatasetReference"
+					},
+					"name": "pollutionschema"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_blobstorage_v2",
+						"type": "DatasetReference"
+					},
+					"name": "createcsvwithfilterpollutionschema"
+				}
+			],
+			"transformations": [
+				{
+					"name": "windowforrownumber"
+				},
+				{
+					"name": "firterbynumberofdays"
+				}
+			],
+			"script": "parameters{\n\tnumberofdays as integer (5)\n}\nsource(output(\n\t\tYear as integer,\n\t\tMonth as integer,\n\t\tDate as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> pollutionschema\npollutionschema window(desc(Year, true),\n\tdesc(Month, true),\n\tdesc(Date, true),\n\tRowNumberSeq = rowNumber()) ~> windowforrownumber\nwindowforrownumber filter($numberofdays >= RowNumberSeq) ~> firterbynumberofdays\nfirterbynumberofdays sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat(\"pollutionfiltereddata\", toString(currentDate(), \"yyyy-MM-dd\"), \".csv\"))],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> createcsvwithfilterpollutionschema"
+		}
+	}
+}
