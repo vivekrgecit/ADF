@@ -6,15 +6,6 @@
 		"pipelines": [
 			{
 				"pipelineReference": {
-					"referenceName": "pipeline_aggfiltereddata",
-					"type": "PipelineReference"
-				},
-				"parameters": {
-					"numberofdays": 5
-				}
-			},
-			{
-				"pipelineReference": {
 					"referenceName": "pipeline_dumpPollutionData",
 					"type": "PipelineReference"
 				}
