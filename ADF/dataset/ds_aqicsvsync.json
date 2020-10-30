@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@concat('AQI_', formatDateTime(utcnow(), 'yyyy-MM-dd.csv'))",
-					"type": "Expression"
-				},
 				"folderPath": "AQI",
 				"container": "pollutiondata"
 			},
