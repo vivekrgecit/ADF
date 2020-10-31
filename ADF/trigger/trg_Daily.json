@@ -1,0 +1,17 @@
+{
+	"name": "trg_Daily",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2020-10-31T23:45:00Z",
+				"timeZone": "UTC"
+			}
+		}
+	}
+}
