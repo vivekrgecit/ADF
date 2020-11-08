@@ -10,7 +10,7 @@
 					"referenceName": "akv_cepPollutionData",
 					"type": "LinkedServiceReference"
 				},
-				"secretName": "cepsaoct"
+				"secretName": "cepadfoctconnectionstring"
 			}
 		}
 	}
