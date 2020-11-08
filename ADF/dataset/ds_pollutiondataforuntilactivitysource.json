@@ -17,7 +17,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"folderPath": {
-					"value": "@concat('/', formatDateTime(adddays(utcnow(), mul(dataset().leftdays, -1)), 'yyyy/MM/dd/'))",
+					"value": "@concat('/', formatDateTime(adddays(utcnow(), mul(int(dataset().leftdays), -1)), 'yyyy/MM/dd/'))",
 					"type": "Expression"
 				},
 				"container": "pollutiondata"
