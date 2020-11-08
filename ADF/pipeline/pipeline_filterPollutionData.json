@@ -215,7 +215,7 @@
 		"parameters": {
 			"PP_NumberOfDays": {
 				"type": "int",
-				"defaultValue": 5
+				"defaultValue": 3
 			}
 		},
 		"variables": {
