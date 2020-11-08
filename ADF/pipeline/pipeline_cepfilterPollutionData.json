@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_filterPollutionData",
+	"name": "pipeline_cepfilterPollutionData",
 	"properties": {
 		"activities": [
 			{
