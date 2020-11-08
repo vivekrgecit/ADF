@@ -1,0 +1,17 @@
+{
+	"name": "ls_cepPollutionData",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "akv_cepPollutionData",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "cepsaoct"
+			}
+		}
+	}
+}
