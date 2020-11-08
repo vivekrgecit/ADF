@@ -112,7 +112,7 @@
 							},
 							"inputs": [
 								{
-									"referenceName": "ds_pollutiondataforuntilactivitysource",
+									"referenceName": "ds_ceppollutiondataforuntilactivitysource",
 									"type": "DatasetReference",
 									"parameters": {
 										"leftdays": {
@@ -124,7 +124,7 @@
 							],
 							"outputs": [
 								{
-									"referenceName": "ds_pollutiondataforuntilactivitysink",
+									"referenceName": "ds_ceppollutiondataforuntilactivitysink",
 									"type": "DatasetReference"
 								}
 							]
@@ -194,7 +194,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ds_PollutionFilteredData",
+						"referenceName": "ds_cepPollutionFilteredData",
 						"type": "DataFlowReference",
 						"parameters": {
 							"NoOfDays": {

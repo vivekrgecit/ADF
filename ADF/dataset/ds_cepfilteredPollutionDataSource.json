@@ -1,8 +1,8 @@
 {
-	"name": "ds_filteredPollutionData",
+	"name": "ds_cepfilteredPollutionDataSource",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_blobstorageformultiplefiles",
+			"referenceName": "ls_cepPollutionData",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

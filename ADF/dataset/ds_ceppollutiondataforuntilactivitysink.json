@@ -2,7 +2,7 @@
 	"name": "ds_ceppollutiondataforuntilactivitysink",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_blobstorageformultiplefiles",
+			"referenceName": "ls_cepPollutionData",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],

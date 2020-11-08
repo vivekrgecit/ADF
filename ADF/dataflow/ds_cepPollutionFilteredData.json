@@ -1,12 +1,12 @@
 {
-	"name": "ds_PollutionFilteredData",
+	"name": "ds_cepPollutionFilteredData",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_filteredPollutionData",
+						"referenceName": "ds_cepfilteredPollutionDataSource",
 						"type": "DatasetReference"
 					},
 					"name": "pollutionfiltereddataSource"
@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_PollutionFilteredData",
+						"referenceName": "ds_cepfilteredPollutionDataSink",
 						"type": "DatasetReference"
 					},
 					"name": "sinkPollutionFilteredData"
