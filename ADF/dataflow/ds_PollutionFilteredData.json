@@ -1,0 +1,32 @@
+{
+	"name": "ds_PollutionFilteredData",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_filteredPollutionData",
+						"type": "DatasetReference"
+					},
+					"name": "pollutionfiltereddataSource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_PollutionFilteredData",
+						"type": "DatasetReference"
+					},
+					"name": "sinkPollutionFilteredData"
+				}
+			],
+			"transformations": [
+				{
+					"name": "unionallfiles"
+				}
+			],
+			"script": "parameters{\n\tNoOfDays as integer (0)\n}\nsource(output(\n\t\tid as string,\n\t\tcountry as string,\n\t\tstate as string,\n\t\tcity as string,\n\t\tstation as string,\n\t\tlast_update as string,\n\t\tpollutant_id as string,\n\t\tpollutant_min as string,\n\t\tpollutant_max as string,\n\t\tpollutant_avg as string,\n\t\tpollutant_unit as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tpartitionBy('hash', 1)) ~> pollutionfiltereddataSource\npollutionfiltereddataSource union(byName: true,\n\tpartitionBy('hash', 1))~> unionallfiles\nunionallfiles sink(input(\n\t\tColumn_1 as string,\n\t\tColumn_2 as string,\n\t\tColumn_3 as string,\n\t\tColumn_4 as string,\n\t\tColumn_5 as string,\n\t\tColumn_6 as string,\n\t\tColumn_7 as string,\n\t\tColumn_8 as string,\n\t\tColumn_9 as string,\n\t\tColumn_10 as string,\n\t\tColumn_11 as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat('PollutionData_Last_', toString($NoOfDays), '_Days.csv'))],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinkPollutionFilteredData"
+		}
+	}
+}
