@@ -1,0 +1,198 @@
+{
+	"name": "pipeline_filterPollutionData",
+	"properties": {
+		"activities": [
+			{
+				"name": "readfolderandcopypollutiondata",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@bool(variables('isActive'))",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(variables('until_i'), '0')",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "set_until_i_to_until_i_minus",
+										"description": "set until_i = until_i - 1",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "until_i",
+											"value": {
+												"value": "@variables('until_i_minus')",
+												"type": "Expression"
+											}
+										}
+									}
+								],
+								"ifTrueActivities": [
+									{
+										"name": "set_until_i_variable",
+										"description": "Set variable \"until_i\" to number of days coming from pipeline (this variable initialize only ones in single run)",
+										"type": "SetVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "until_i",
+											"value": {
+												"value": "@string(pipeline().parameters.PP_NumberOfDays)",
+												"type": "Expression"
+											}
+										}
+									}
+								]
+							}
+						},
+						{
+							"name": "CopyFilterDataIntoFolder",
+							"type": "Copy",
+							"dependsOn": [
+								{
+									"activity": "If Condition1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"wildcardFileName": "*.csv"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"sink": {
+									"type": "DelimitedTextSink",
+									"storeSettings": {
+										"type": "AzureBlobStorageWriteSettings",
+										"copyBehavior": "MergeFiles"
+									},
+									"formatSettings": {
+										"type": "DelimitedTextWriteSettings",
+										"quoteAllText": true,
+										"fileExtension": ".txt"
+									}
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "ds_pollutiondataforuntilactivitysource",
+									"type": "DatasetReference",
+									"parameters": {
+										"leftdays": {
+											"value": "@variables('until_i')",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "ds_pollutiondataforuntilactivitysink",
+									"type": "DatasetReference"
+								}
+							]
+						},
+						{
+							"name": "set_until_i_minus",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "CopyFilterDataIntoFolder",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "until_i_minus",
+								"value": {
+									"value": "@string(sub(int(variables('until_i')),1))",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "set_isActive",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "set_until_i_minus",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "isActive",
+								"value": {
+									"value": "@less(int(variables('until_i_minus')),1)",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"timeout": "7.00:00:00"
+				}
+			}
+		],
+		"parameters": {
+			"PP_NumberOfDays": {
+				"type": "int",
+				"defaultValue": 5
+			}
+		},
+		"variables": {
+			"until_i": {
+				"type": "String",
+				"defaultValue": "0"
+			},
+			"until_i_minus": {
+				"type": "String",
+				"defaultValue": "0"
+			},
+			"isActive": {
+				"type": "Boolean"
+			}
+		},
+		"annotations": []
+	}
+}
