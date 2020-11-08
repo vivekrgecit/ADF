@@ -196,6 +196,12 @@
 					"dataflow": {
 						"referenceName": "ds_PollutionFilteredData",
 						"type": "DataFlowReference",
+						"parameters": {
+							"NoOfDays": {
+								"value": "@pipeline().parameters.PP_NumberOfDays",
+								"type": "Expression"
+							}
+						},
 						"datasetParameters": {
 							"sinkPollutionFilteredData": {
 								"NoOfDays": {
