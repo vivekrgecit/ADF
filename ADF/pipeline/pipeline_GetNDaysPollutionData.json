@@ -1,5 +1,5 @@
 {
-	"name": "pipeline_cepfilterPollutionData",
+	"name": "pipeline_GetNDaysPollutionData",
 	"properties": {
 		"activities": [
 			{
