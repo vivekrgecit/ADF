@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "df_filterfoldersfrompollutionschema",
+				"description": "des",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -28,7 +29,8 @@
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
-					}
+					},
+					"traceLevel": "Fine"
 				}
 			},
 			{
