@@ -191,7 +191,13 @@
 							"typeProperties": {
 								"dataflow": {
 									"referenceName": "df_getAQIForAllStations",
-									"type": "DataFlowReference"
+									"type": "DataFlowReference",
+									"parameters": {
+										"daysleft": {
+											"value": "@variables('until_i')",
+											"type": "Expression"
+										}
+									}
 								},
 								"compute": {
 									"coreCount": 8,
