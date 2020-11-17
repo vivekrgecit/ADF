@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "AQI",
+				"folderPath": "FilteredData/Temp/AQI",
 				"container": "pollutiondata"
 			},
 			"columnDelimiter": ",",
