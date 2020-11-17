@@ -20,36 +20,47 @@
 		},
 		"schema": [
 			{
+				"name": "id",
 				"type": "String"
 			},
 			{
+				"name": "country",
 				"type": "String"
 			},
 			{
+				"name": "state",
 				"type": "String"
 			},
 			{
+				"name": "city",
 				"type": "String"
 			},
 			{
+				"name": "station",
 				"type": "String"
 			},
 			{
+				"name": "last_update",
 				"type": "String"
 			},
 			{
+				"name": "pollutant_id",
 				"type": "String"
 			},
 			{
+				"name": "pollutant_min",
 				"type": "String"
 			},
 			{
+				"name": "pollutant_max",
 				"type": "String"
 			},
 			{
+				"name": "pollutant_avg",
 				"type": "String"
 			},
 			{
+				"name": "pollutant_unit",
 				"type": "String"
 			}
 		]
