@@ -209,6 +209,43 @@
 					],
 					"timeout": "7.00:00:00"
 				}
+			},
+			{
+				"name": "df_pollutionNDaysData",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "readfolderandcopypollutiondata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "df_pollutionNDaysData",
+						"type": "DataFlowReference",
+						"parameters": {
+							"lastNDays": {
+								"value": "@pipeline().parameters.PP_NumberOfDays",
+								"type": "Expression"
+							}
+						}
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
 			}
 		],
 		"parameters": {
