@@ -134,7 +134,7 @@
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "df_getAQIForAllStations",
+									"activity": "CopyFilterDataIntoFolder",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -168,44 +168,13 @@
 									"type": "Expression"
 								}
 							}
-						},
-						{
-							"name": "df_getAQIForAllStations",
-							"type": "ExecuteDataFlow",
-							"dependsOn": [
-								{
-									"activity": "CopyFilterDataIntoFolder",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
-							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"dataflow": {
-									"referenceName": "df_getAQIForAllStations",
-									"type": "DataFlowReference"
-								},
-								"compute": {
-									"coreCount": 8,
-									"computeType": "General"
-								},
-								"traceLevel": "Fine"
-							}
 						}
 					],
 					"timeout": "7.00:00:00"
 				}
 			},
 			{
-				"name": "ds_PollutionFilteredData",
+				"name": "df_getAQIForAllStations",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
@@ -225,22 +194,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ds_cepPollutionFilteredData",
-						"type": "DataFlowReference",
-						"parameters": {
-							"NoOfDays": {
-								"value": "@pipeline().parameters.PP_NumberOfDays",
-								"type": "Expression"
-							}
-						},
-						"datasetParameters": {
-							"sinkPollutionFilteredData": {
-								"NoOfDays": {
-									"value": "@pipeline().parameters.PP_NumberOfDays",
-									"type": "Expression"
-								}
-							}
-						}
+						"referenceName": "df_getAQIForAllStations",
+						"type": "DataFlowReference"
 					},
 					"compute": {
 						"coreCount": 8,
