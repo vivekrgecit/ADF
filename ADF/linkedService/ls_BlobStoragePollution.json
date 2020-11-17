@@ -12,7 +12,8 @@
 				},
 				"secretName": "cs-cepsaoct"
 			}
-		}
+		},
+		"description": "fffffd"
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
