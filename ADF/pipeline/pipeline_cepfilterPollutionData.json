@@ -134,7 +134,7 @@
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "CopyFilterDataIntoFolder",
+									"activity": "df_getAQIForAllStations",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -168,40 +168,40 @@
 									"type": "Expression"
 								}
 							}
+						},
+						{
+							"name": "df_getAQIForAllStations",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [
+								{
+									"activity": "CopyFilterDataIntoFolder",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "df_getAQIForAllStations",
+									"type": "DataFlowReference"
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
+							}
 						}
 					],
 					"timeout": "7.00:00:00"
-				}
-			},
-			{
-				"name": "df_getAQIForAllStations",
-				"type": "ExecuteDataFlow",
-				"dependsOn": [
-					{
-						"activity": "readfolderandcopypollutiondata",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataflow": {
-						"referenceName": "df_getAQIForAllStations",
-						"type": "DataFlowReference"
-					},
-					"compute": {
-						"coreCount": 8,
-						"computeType": "General"
-					},
-					"traceLevel": "Fine"
 				}
 			}
 		],
