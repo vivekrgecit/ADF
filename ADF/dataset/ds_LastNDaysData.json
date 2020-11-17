@@ -1,0 +1,23 @@
+{
+	"name": "ds_LastNDaysData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_cepPollutionData",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "LastNDaysData",
+				"container": "pollutiondata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
