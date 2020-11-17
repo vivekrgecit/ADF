@@ -134,7 +134,7 @@
 							"type": "SetVariable",
 							"dependsOn": [
 								{
-									"activity": "CopyFilterDataIntoFolder",
+									"activity": "df_getAQIForAllStations",
 									"dependencyConditions": [
 										"Succeeded"
 									]
@@ -167,6 +167,37 @@
 									"value": "@less(int(variables('until_i_minus')),1)",
 									"type": "Expression"
 								}
+							}
+						},
+						{
+							"name": "df_getAQIForAllStations",
+							"type": "ExecuteDataFlow",
+							"dependsOn": [
+								{
+									"activity": "CopyFilterDataIntoFolder",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"dataflow": {
+									"referenceName": "df_getAQIForAllStations",
+									"type": "DataFlowReference"
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
 							}
 						}
 					],
