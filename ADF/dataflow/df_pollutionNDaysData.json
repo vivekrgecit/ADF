@@ -1,0 +1,32 @@
+{
+	"name": "df_pollutionNDaysData",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_ceppollutiondataforuntilactivitysink",
+						"type": "DatasetReference"
+					},
+					"name": "aqisource"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_LastNDaysData",
+						"type": "DatasetReference"
+					},
+					"name": "sinktolastNNumberofDays"
+				}
+			],
+			"transformations": [
+				{
+					"name": "aggpollutionNdaysdata"
+				}
+			],
+			"script": "parameters{\n\tlastNDays as integer (0)\n}\nsource(output(\n\t\tid as string,\n\t\tcountry as string,\n\t\tstate as string,\n\t\tcity as string,\n\t\tstation as string,\n\t\tlast_update as string,\n\t\tpollutant_id as string,\n\t\tpollutant_min as double '000,000,000.000',\n\t\tpollutant_max as double '000,000,000.000',\n\t\tpollutant_avg as double '000,000,000.000',\n\t\tpollutant_unit as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tpurgeFiles: true,\n\twildcardPaths:['FilteredData/Temp/AQI/*.csv']) ~> aqisource\naqisource aggregate(groupBy(city,\n\t\tstation,\n\t\tpollutant_id),\n\tpollutant_min = min(pollutant_min),\n\t\tpollutant_max = max(pollutant_max),\n\t\tpollutant_avg = avg(pollutant_avg)) ~> aggpollutionNdaysdata\naggpollutionNdaysdata sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tpartitionFileNames:[(concat(\"IndiaPollutionDataForLast_\", toString($lastNDays), \"_Days\"))],\n\tpartitionBy('hash', 1),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sinktolastNNumberofDays"
+		}
+	}
+}
