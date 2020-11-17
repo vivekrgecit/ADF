@@ -1,5 +1,6 @@
 {
 	"name": "akv_cepPollutionData",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureKeyVault",

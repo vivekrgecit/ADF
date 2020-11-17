@@ -214,7 +214,8 @@
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
-					}
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
@@ -237,6 +238,8 @@
 				"type": "Boolean"
 			}
 		},
-		"annotations": []
-	}
+		"annotations": [],
+		"lastPublishTime": "2020-11-17T13:32:29Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
 }
